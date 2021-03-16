@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Simple React Form Using Formik & Yup
 
 
