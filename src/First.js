@@ -6,8 +6,7 @@ import Second from './Second';
 
 
 
-export default (props) => { 
-    console.log(props.formik)
+export default () => { 
     return (
         <>
                 <Field

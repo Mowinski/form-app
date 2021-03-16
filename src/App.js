@@ -75,7 +75,7 @@ class App extends React.Component {
               <Switch>
                 <Redirect from="/" exact to="/first" />
                 <Route path="/first">
-                  <First formik = {formik}/>
+                  <First/>
                 </Route>
                 <Route path="/second" component={Second} />
                 <Route path="/third">
