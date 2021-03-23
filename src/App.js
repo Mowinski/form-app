@@ -62,9 +62,7 @@ class App extends React.Component {
                     checkSum = sum + (10 - m);
                   } else {checkSum = sum}
                   let check = checkSum.toString();
-                  console.log(check)
                   check = check[check.length -1];
-                  console.log(check)
                   if(check == 0) return true;   
                   return false;
                 } else {return true;}
