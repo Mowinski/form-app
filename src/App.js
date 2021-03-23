@@ -47,7 +47,28 @@ class App extends React.Component {
               .required()
               .matches(/^[0-9]+$/, "Must be only digits")
               .min(11, 'Must be exactly 11 digits')
-              .max(11, 'Must be exactly 11 digits'),
+              .max(11, 'Must be exactly 11 digits')
+              .test('test-name','Bad check sum of PESEL', (value) => {
+                const weight = [1,3,7,9,1,3,7,9,1,3];
+                if(value && value.length === 11) {
+                  let sum = 0;
+                  let m;
+                  let checkSum;
+                  for(let i=0; i < 10; i++) {
+                     sum += value[i] * weight[i] 
+                  }
+                  m = sum % 10;
+                  if (m !== 0) {
+                    checkSum = sum + (10 - m);
+                  } else {checkSum = sum}
+                  let check = checkSum.toString();
+                  console.log(check)
+                  check = check[check.length -1];
+                  console.log(check)
+                  if(check == 0) return true;   
+                  return false;
+                } else {return true;}
+              }),
             nip: Yup.string()
               .required()
               .matches(/^[0-9]+$/, "Must be only digits")
@@ -68,8 +89,6 @@ class App extends React.Component {
           } 
         >
           {formik => {
-            console.log('props',formik)
-            console.log(formik)
             return (
             <Form className="form">
               <Switch>
