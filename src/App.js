@@ -49,23 +49,18 @@ class App extends React.Component {
               .min(11, 'Must be exactly 11 digits')
               .max(11, 'Must be exactly 11 digits')
               .test('test-name','Bad check sum of PESEL', (value) => {
-                const weight = [1,3,7,9,1,3,7,9,1,3];
-                if(value && value.length === 11) {
-                  let sum = 0;
-                  let m;
-                  let checkSum;
-                  for(let i=0; i < 10; i++) {
-                     sum += value[i] * weight[i] 
-                  }
-                  m = sum % 10;
-                  if (m !== 0) {
-                    checkSum = sum + (10 - m);
-                  } else {checkSum = sum}
-                  let check = checkSum.toString();
-                  check = check[check.length -1];
-                  if(check == 0) return true;   
-                  return false;
-                } else {return true;}
+                    if(!value) return false;
+                    const weight = [1,3,7,9,1,3,7,9,1,3];
+                    let sum = 0;
+                    let m;
+                    let checkSum;
+                    let controlDigit;
+                    for(let i=0; i < 10; i++) {
+                      sum += value[i] * weight[i] 
+                    }
+                    console.log(sum);
+                    m = sum % 10;
+                    return (10 - m) % 10 == value[10];
               }),
             nip: Yup.string()
               .required()
